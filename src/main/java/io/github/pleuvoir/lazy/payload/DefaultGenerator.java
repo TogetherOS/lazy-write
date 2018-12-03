@@ -14,7 +14,7 @@ import io.github.pleuvoir.sql.tookit.DataModel;
 
 public class DefaultGenerator implements Generator {
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private static Logger logger = LoggerFactory.getLogger(Generator.class);
 
 	@Autowired
 	private DBScriptRunner dBScriptRunner;
@@ -41,6 +41,18 @@ public class DefaultGenerator implements Generator {
 		logger.info("根据sql生成 VO【{}】，文件【{}】", voName, file);
 		// 根据 freemark 生成文件
 		dataModel.addData("entityName", voName).write("vo.ftl", file);
+	}
+
+	@Override
+	public String getAllColumnsBySql(String sql) {
+		StringBuffer sb = new StringBuffer();
+		dBScriptRunner.excute(sql).getColumnExtendList().forEach(colunm -> {
+			sb.append(colunm.getColumnName().toLowerCase()).append(",");
+		});
+		if (sb.length() > 0) {
+			sb.deleteCharAt(sb.length() - 1);
+		}
+		return sb.toString();
 	}
 
 }

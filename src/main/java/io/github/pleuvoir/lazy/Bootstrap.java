@@ -26,8 +26,11 @@ public class Bootstrap implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// 生成单表实体文件
-		generator.generateSingleTabelePO("emp");
-		// 根据 sql 生成 vo
+		generator.generateSingleTabelePO("sys_user");
+		// 根据 sql 生成 VO
 		generator.generateVO("select * from emp e left join dept d on e.deptno = d.deptno", "EmpDeptVO");
+		// 查看执行sql的列，并以,拼接
+		generator.getAllColumnsBySql("select * from sys_user  u left join sys_role r on  u.role_id = r.role_id");
+		// 结果是这样的 格式..  user_id,username,password,name
 	}
 }

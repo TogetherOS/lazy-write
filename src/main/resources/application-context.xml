@@ -13,10 +13,10 @@
 		<!-- 数据源 -->
 		<property name="dataSourceConfig">
 			<bean class="io.github.pleuvoir.sql.bean.DataSourceConfig">
-				<property name="driverClass" value="oracle.jdbc.OracleDriver" />
-				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
-				<property name="username" value="scott" />
-				<property name="password" value="tiger" />
+				<property name="driverClass" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;allowMultiQueries=true" />
+				<property name="username" value="root" />
+				<property name="password" value="root" />
 			</bean>
 		</property>
 	</bean>

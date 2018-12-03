@@ -19,4 +19,11 @@ public interface Generator {
 	 * @param voName	vo 名称
 	 */
 	void generateVO(String sql, String voName) throws FileNotFoundException, IOException, TemplateException;
+	
+	/**
+	 * 获取所有的列名，并以 , 分割拼接
+	 * @param sql	待执行的 sql
+	 * @return	拼接后所有的列名小写
+	 */
+	String getAllColumnsBySql(String sql);
 }

@@ -22,10 +22,10 @@ public class ${dataModel.entityName} implements Serializable {
 	
 	
 	<#list dataModel.metaData.columnExtendList as columnExtend>
-	<#if "${columnExtend.field}" == "${dataModel.metaData.primaryKey}">
+	<#if "${columnExtend.columnName}" == "${dataModel.metaData.primaryKey}">
     @Id
 	@GeneratedValue(generator = "${dataModel.entityName?uncap_first}Seq")
-	@GenericGenerator(name="${entityName?uncap_first}Seq",strategy="uuid")
+	@GenericGenerator(name="${dataModel.entityName?uncap_first}Seq",strategy="uuid")
 	</#if>
 	<#if "${columnExtend.columnTypeName}" == "BLOB">
 	@Lob
